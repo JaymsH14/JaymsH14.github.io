@@ -1,0 +1,288 @@
+/* ==========================================================================
+   style.css — DigitalStone AI
+   Global reset, design tokens (:root), and base typography.
+   All other styles live in components.css and sections.css.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Design Tokens
+   -------------------------------------------------------------------------- */
+
+:root {
+  /* Core surfaces */
+  --ds-black:       #000000;
+  --ds-light-gray:  #f5f5f7;
+  --ds-white:       #ffffff;
+  --ds-near-black:  #1d1d1f;
+
+  /* Interactive — the only chromatic color */
+  --ds-blue:        #0071e3;
+  --ds-link-blue:   #0066cc;
+  --ds-bright-blue: #2997ff;
+
+  /* Text */
+  --ds-text-primary-light:   #1d1d1f;
+  --ds-text-secondary-light: rgba(0, 0, 0, 0.80);
+  --ds-text-tertiary-light:  rgba(0, 0, 0, 0.48);
+  --ds-text-primary-dark:    #ffffff;
+
+  /* Dark surface variants (cards on black sections) */
+  --ds-surface-1: #272729;
+  --ds-surface-2: #262628;
+  --ds-surface-3: #28282a;
+  --ds-surface-4: #2a2a2d;
+  --ds-surface-5: #242426;
+
+  /* Brand gradient blues — logo and partner panel only */
+  --ds-brand-blue-1: #1ab6ff;
+  --ds-brand-blue-2: #0085ff;
+  --ds-brand-blue-3: #003b73;
+
+  /* Button / overlay states */
+  --ds-btn-active:        #ededf2;
+  --ds-btn-default-light: #fafafc;
+  --ds-overlay-light:     rgba(210, 210, 215, 0.64);
+  --ds-white-32:          rgba(255, 255, 255, 0.32);
+
+  /* Nav glassmorphism */
+  --ds-nav-glass-bg:     rgba(0, 0, 0, 0.72);
+  --ds-nav-glass-filter: saturate(180%) blur(20px);
+
+  /* Elevation */
+  --ds-shadow-card: 3px 5px 30px 0 rgba(0, 0, 0, 0.22);
+
+  /* Typography — families */
+  --ds-font-display: "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --ds-font-text:    "SF Pro Text",    "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  /* Typography — scale */
+  --ds-text-hero:    3.5rem;    /* 56px — section hero heading */
+  --ds-text-h1:      4.5rem;    /* 72px — home hero H1 */
+  --ds-text-h1-page: 4.25rem;   /* 68px — page hero H1 */
+  --ds-text-h2:      3.5rem;    /* 56px — stats H2 */
+  --ds-text-h2-sm:   3rem;      /* 48px — approach H2 */
+  --ds-text-h2-xs:   2.5rem;    /* 40px — section H2 */
+  --ds-text-h3:      1.75rem;   /* 28px — tile heading */
+  --ds-text-card:    1.3125rem; /* 21px — card title */
+  --ds-text-body:    1.0625rem; /* 17px — body */
+  --ds-text-small:   0.9375rem; /* 15px */
+  --ds-text-caption: 0.875rem;  /* 14px */
+  --ds-text-micro:   0.75rem;   /* 12px */
+  --ds-text-nano:    0.6875rem; /* 11px */
+
+  /* Spacing scale */
+  --ds-space-2:  2px;
+  --ds-space-4:  4px;
+  --ds-space-6:  6px;
+  --ds-space-8:  8px;
+  --ds-space-10: 10px;
+  --ds-space-12: 12px;
+  --ds-space-14: 14px;
+  --ds-space-16: 16px;
+  --ds-space-20: 20px;
+  --ds-space-24: 24px;
+  --ds-space-28: 28px;
+  --ds-space-32: 32px;
+  --ds-space-40: 40px;
+  --ds-space-48: 48px;
+  --ds-space-56: 56px;
+  --ds-space-64: 64px;
+  --ds-space-72: 72px;
+  --ds-space-96: 96px;
+  --ds-space-120: 120px;
+
+  /* Border radii */
+  --ds-radius-micro:    5px;
+  --ds-radius-sm:       8px;
+  --ds-radius-md:       11px;
+  --ds-radius-lg:       12px;
+  --ds-radius-xl:       14px;
+  --ds-radius-2xl:      18px;
+  --ds-radius-3xl:      22px;
+  --ds-radius-pill:     980px;
+  --ds-radius-circle:   50%;
+
+  /* Z-index scale */
+  --z-base:    1;
+  --z-nav:     100;
+  --z-overlay: 200;
+  --z-modal:   300;
+
+  /* Transitions */
+  --transition-fast:   150ms ease;
+  --transition-base:   220ms ease;
+  --transition-slow:   400ms ease;
+
+  /* Layout */
+  --container-max:    1200px;
+  --content-max:      980px;
+  --ds-nav-height:    56px;
+  --section-pad-y:    96px;
+  --section-pad-x:    28px;
+}
+
+/* --------------------------------------------------------------------------
+   Reset
+   -------------------------------------------------------------------------- */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--ds-font-text);
+  font-size: var(--ds-text-body);
+  line-height: 1.47;
+  letter-spacing: -0.374px;
+  color: var(--ds-text-primary-light);
+  background: var(--ds-black);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-family: var(--ds-font-display);
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: var(--ds-link-blue);
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img, svg {
+  display: block;
+}
+
+button, input, select, textarea {
+  font-family: var(--ds-font-text);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--ds-blue);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: rgba(0, 113, 227, 0.25);
+}
+
+/* --------------------------------------------------------------------------
+   Layout shell — smooth-wrapper/content are plain containers (native browser scroll)
+   -------------------------------------------------------------------------- */
+
+#smooth-wrapper,
+#smooth-content {
+  display: contents;
+}
+
+/* --------------------------------------------------------------------------
+   Page view system — JS router shows/hides via data-active
+   -------------------------------------------------------------------------- */
+
+.page-view {
+  display: none;
+}
+
+.page-view[data-active="true"] {
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+   Skip navigation — hidden until focused by keyboard
+   -------------------------------------------------------------------------- */
+
+.skip-nav {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  z-index: var(--z-modal);
+  padding: 10px 18px;
+  background: var(--ds-blue);
+  color: var(--ds-white);
+  font-size: 14px;
+  font-family: var(--ds-font-text);
+  letter-spacing: -0.18px;
+  text-decoration: none;
+  border-radius: 0 0 var(--ds-radius-sm) 0;
+  transition: top 0.15s ease;
+}
+
+.skip-nav:focus {
+  top: 0;
+  outline: 2px solid var(--ds-white);
+  outline-offset: 2px;
+  text-decoration: none;
+}
+
+/* Noscript fallback */
+.noscript-notice {
+  margin: 0;
+  padding: 12px var(--section-pad-x);
+  background: #1d1d1f;
+  color: rgba(255, 255, 255, 0.82);
+  font-family: var(--ds-font-text);
+  font-size: 14px;
+  text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   Reduced motion — disable all CSS transitions and animations.
+   GSAP honours its own prefersReduced check in animations.js.
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Layout utilities
+   -------------------------------------------------------------------------- */
+
+.section-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  position: relative;
+}
+
+.content-inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  position: relative;
+}
