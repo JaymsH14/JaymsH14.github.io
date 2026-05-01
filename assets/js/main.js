@@ -32,6 +32,17 @@ function showPage(route) {
   };
   document.title = titles[route] || "DigitalStone AI";
 
+  /* Update meta description */
+  const descriptions = {
+    home:     "DigitalStone AI — AI automation and consulting. We design, build, and run AI systems that drive measurable outcomes for operators, founders, and agencies.",
+    services: "Six practice areas from AI automation systems to managed operations. We design, build, and run AI — not just advise. Free 45-minute diagnostic.",
+    work:     "Case studies across legal, wellness, hospitality, and infrastructure. Live AI systems measured in production — not demos, not decks.",
+    links:    "Where to find DigitalStone AI, the tools we use, and the resources that shape how we build AI systems.",
+    contact:  "Start a project with DigitalStone AI. Free 45-minute diagnostic. We'll tell you whether AI is the right tool before you spend a dollar.",
+  };
+  const descEl = document.querySelector('meta[name="description"]');
+  if (descEl) descEl.setAttribute("content", descriptions[route] || descriptions.home);
+
   closeMobileNav();
 
   const swap = () => {
