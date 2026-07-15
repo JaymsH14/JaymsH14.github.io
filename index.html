@@ -34,9 +34,9 @@
   <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/logo/apple-touch-icon.png">
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="./assets/css/style.css">
-  <link rel="stylesheet" href="./assets/css/components.css">
-  <link rel="stylesheet" href="./assets/css/sections.css">
+  <link rel="stylesheet" href="./assets/css/style.css?v=6">
+  <link rel="stylesheet" href="./assets/css/components.css?v=6">
+  <link rel="stylesheet" href="./assets/css/sections.css?v=6">
 
   <!-- GSAP — self-hosted core + ScrollTrigger (v3.12.5, free, no Club plugins) -->
   <script src="./assets/js/vendor/gsap.min.js"></script>
@@ -975,28 +975,51 @@
             </div>
           </section>
 
-          <!-- Studio Coming Soon -->
+          <!-- Studio content -->
           <section class="studio-section" id="studio-content">
             <div class="section-inner">
-              <div class="studio-panel">
-                <div class="studio-panel-glow" aria-hidden="true"></div>
-                <div class="studio-panel-inner">
-                  <span class="studio-badge">Coming soon</span>
-                  <h2 class="studio-h2">The Studio is <em class="italic-blue">on its way.</em></h2>
-                  <p class="studio-body">
-                    We're building a dedicated space for AI-generated content — done-for-you
-                    pipelines that turn a brief into finished visuals, on brand and on demand.
-                  </p>
-                  <ul class="studio-list" role="list">
-                    <li class="studio-item"><span class="studio-tick" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#4cc4ff" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span>AI image generation workflows — consistent, on-brand, on demand</li>
-                    <li class="studio-item"><span class="studio-tick" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#4cc4ff" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span>Automated video generation systems for social and ads</li>
-                    <li class="studio-item"><span class="studio-tick" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#4cc4ff" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span>Content pipelines that scale output without scaling your team</li>
-                  </ul>
-                  <div class="studio-cta">
-                    <a href="#" class="pill-btn pill-btn--white" data-route="contact">Get early access ›</a>
-                  </div>
-                </div>
+
+              <div class="studio-intro">
+                <span class="studio-badge">Coming soon</span>
+                <h2 class="studio-h2">A dedicated studio for<br><em class="italic-blue">AI-generated content.</em></h2>
+                <p class="studio-body">
+                  We're building done-for-you pipelines that turn a brief into finished visuals —
+                  on brand, on demand, and at volume. Here's a preview of what's on the way.
+                </p>
               </div>
+
+              <div class="studio-grid">
+                <article class="studio-card">
+                  <span class="studio-card-tag">Coming soon</span>
+                  <h3 class="studio-card-title">AI image generation</h3>
+                  <p class="studio-card-body">
+                    On-brand images and creative, generated on demand and publish-ready — no stock
+                    libraries, no waiting on a designer for every asset.
+                  </p>
+                </article>
+                <article class="studio-card">
+                  <span class="studio-card-tag">Coming soon</span>
+                  <h3 class="studio-card-title">AI video systems</h3>
+                  <p class="studio-card-body">
+                    Automated short-form video for social, ads, and product — built as repeatable
+                    pipelines, so a week of content ships in an afternoon.
+                  </p>
+                </article>
+                <article class="studio-card">
+                  <span class="studio-card-tag">Coming soon</span>
+                  <h3 class="studio-card-title">Content pipelines</h3>
+                  <p class="studio-card-body">
+                    End-to-end systems that turn a brief into finished assets and route them where
+                    they belong — output that scales without new headcount.
+                  </p>
+                </article>
+              </div>
+
+              <div class="studio-cta-row">
+                <p class="studio-cta-text">Want first access when the Studio opens?</p>
+                <a href="#" class="pill-btn pill-btn--white" data-route="contact">Get early access ›</a>
+              </div>
+
             </div>
           </section>
 
@@ -1245,9 +1268,11 @@
   </div><!-- /#smooth-wrapper -->
 
   <!-- JS — defer after GSAP is loaded -->
-  <script defer src="./assets/js/gsap-config.js"></script>
-  <script defer src="./assets/js/animations.js"></script>
-  <script defer src="./assets/js/main.js"></script>
+  <!-- ?v=N is a cache-buster: bump it whenever a JS/CSS file changes so
+       browsers fetch the new version instead of a stale cached copy. -->
+  <script defer src="./assets/js/gsap-config.js?v=6"></script>
+  <script defer src="./assets/js/animations.js?v=6"></script>
+  <script defer src="./assets/js/main.js?v=6"></script>
 
 </body>
 </html>

@@ -252,11 +252,11 @@ function initStudioScrollAnimations() {
   const page = document.querySelector('[data-page="studio"]');
   if (!page) return;
 
-  /* Transform-only reveal (no opacity/visibility) so the panel is never left
+  /* Transform-only reveal (no opacity/visibility) so cards are never left
      blank if the trigger is slow to fire; the page itself fades in already. */
-  gsap.from(page.querySelector(".studio-panel"), {
-    y: 24, duration: 0.6, ease: "power2.out",
-    scrollTrigger: { trigger: "#studio-content", start: "top 88%", once: true },
+  gsap.from(page.querySelectorAll(".studio-card"), {
+    y: 24, duration: 0.5, ease: "power2.out", stagger: 0.08,
+    scrollTrigger: { trigger: "#studio-content", start: "top 82%", once: true },
   });
 }
 
