@@ -13,31 +13,34 @@
   <meta property="og:description" content="AI automation and consulting for teams that want intelligence to quietly do the work.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.digitalstoneai.com/">
-  <meta property="og:image" content="https://www.digitalstoneai.com/assets/images/logo/digitalstone-logo.png">
+  <meta property="og:image" content="https://www.digitalstoneai.com/assets/images/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="DigitalStone AI — Intelligence that runs">
   <meta property="og:site_name" content="DigitalStone AI">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="DigitalStone AI — Intelligence that runs">
   <meta name="twitter:description" content="AI automation and consulting for teams that want intelligence to quietly do the work.">
-  <meta name="twitter:image" content="https://www.digitalstoneai.com/assets/images/logo/digitalstone-logo.png">
+  <meta name="twitter:image" content="https://www.digitalstoneai.com/assets/images/og-card.png">
 
   <title>DigitalStone AI — Intelligence that runs</title>
 
-  <!-- Favicon placeholder -->
-  <link rel="icon" href="./assets/images/logo/digitalstone-logo.png" type="image/png">
-
-  <!-- Preconnect hint for GSAP CDN -->
-  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <!-- Favicons -->
+  <link rel="icon" href="./favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/logo/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/logo/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/logo/apple-touch-icon.png">
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="./assets/css/style.css">
   <link rel="stylesheet" href="./assets/css/components.css">
   <link rel="stylesheet" href="./assets/css/sections.css">
 
-  <!-- GSAP CDN — core + ScrollTrigger only (free, no Club plugins required) -->
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <!-- GSAP — self-hosted core + ScrollTrigger (v3.12.5, free, no Club plugins) -->
+  <script src="./assets/js/vendor/gsap.min.js"></script>
+  <script src="./assets/js/vendor/ScrollTrigger.min.js"></script>
 
   <!-- Structured data -->
   <script type="application/ld+json">
@@ -184,17 +187,6 @@
             <!-- Main content -->
             <div class="hero-inner">
 
-              <!-- Logo above heading — in normal flow, cannot overlap content -->
-              <div class="hero-logo-above">
-                <div class="hero-logo-above-plate">
-                  <img
-                    src="./assets/images/logo/digitalstone-logo-trans.png"
-                    alt="DigitalStone AI"
-                    class="hero-logo-above-img"
-                  >
-                </div>
-              </div>
-
               <div class="hero-eyebrow">
                 <span>Intelligence for</span>
                 <span class="chip">operators</span>
@@ -222,23 +214,29 @@
             </div><!-- /.hero-inner -->
 
             <!-- Industry + tool logo strip -->
-            <div class="logo-strip" aria-label="Industries served and tools">
-              <div class="logo-row">
-                <span class="logo-item">Legal & Compliance</span>
-                <span class="logo-item">Med Spa & Wellness</span>
-                <span class="logo-item">Hospitality & Events</span>
-                <span class="logo-item">Construction & Infra</span>
-                <span class="logo-item">Gov & Defense</span>
-                <span class="logo-item">Maritime & Ports</span>
+            <div class="logo-strip" aria-label="Industries served and tools we build with">
+              <div class="logo-group">
+                <span class="logo-label">Industries we serve</span>
+                <div class="logo-row">
+                  <span class="logo-item">Legal & Compliance</span>
+                  <span class="logo-item">Med Spa & Wellness</span>
+                  <span class="logo-item">Hospitality & Events</span>
+                  <span class="logo-item">Construction & Infra</span>
+                  <span class="logo-item">Gov & Defense</span>
+                  <span class="logo-item">Maritime & Ports</span>
+                </div>
               </div>
-              <div class="logo-row">
-                <span class="logo-item">Square</span>
-                <span class="logo-item">Twilio</span>
-                <span class="logo-item">LangChain</span>
-                <span class="logo-item">OpenAI</span>
-                <span class="logo-item">Airtable</span>
-                <span class="logo-item">n8n</span>
-                <span class="logo-item">Eventbrite</span>
+              <div class="logo-group">
+                <span class="logo-label">Tools we build with</span>
+                <div class="logo-row">
+                  <span class="logo-item">Square</span>
+                  <span class="logo-item">Twilio</span>
+                  <span class="logo-item">LangChain</span>
+                  <span class="logo-item">OpenAI</span>
+                  <span class="logo-item">Airtable</span>
+                  <span class="logo-item">n8n</span>
+                  <span class="logo-item">Eventbrite</span>
+                </div>
               </div>
             </div>
 
@@ -303,9 +301,9 @@
               <div class="approach-header">
                 <h2 class="approach-h2">
                   Our custom approach<br>
-                  ensures <em class="italic-blue-light">projects succeed.</em>
+                  ensures <em class="italic-blue-light">deployments succeed.</em>
                 </h2>
-                <a href="#" class="pill-btn pill-btn--outline-light" data-route="work">More projects ›</a>
+                <a href="#" class="pill-btn pill-btn--outline-light" data-route="work">See case studies ›</a>
               </div>
 
               <div class="project-grid">

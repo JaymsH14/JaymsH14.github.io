@@ -59,12 +59,39 @@ function showPage(route) {
   }
 }
 
-/* Wire all [data-route] anchors */
+/* --------------------------------------------------------------------------
+   Hash routing — shareable per-page URLs, working back/forward buttons
+   home -> "/"  ·  services -> "#/services"  ·  work -> "#/work"  etc.
+   -------------------------------------------------------------------------- */
+
+function routeToHash(route) {
+  return route === "home" ? "#/" : `#/${route}`;
+}
+
+function hashToRoute() {
+  const slug = location.hash.replace(/^#\/?/, "");
+  return PAGES.includes(slug) ? slug : "home";
+}
+
+/* Navigate by updating the hash; the hashchange listener renders the page.
+   If we're already on the target hash, render directly (hashchange won't fire). */
+function navigate(route) {
+  const target = routeToHash(route);
+  if (location.hash === target || (route === "home" && location.hash === "")) {
+    showPage(route);
+  } else {
+    location.hash = target;
+  }
+}
+
+window.addEventListener("hashchange", () => showPage(hashToRoute()));
+
+/* Wire all [data-route] controls (anchors + role="button" cards/tiles) */
 document.addEventListener("click", (e) => {
   const link = e.target.closest("[data-route]");
   if (!link) return;
   e.preventDefault();
-  showPage(link.dataset.route);
+  navigate(link.dataset.route);
 });
 
 /* --------------------------------------------------------------------------
@@ -507,7 +534,11 @@ function _showFormSuccess() {
    -------------------------------------------------------------------------- */
 
 document.addEventListener("DOMContentLoaded", () => {
-  showPage("home");
+  /* Give anchors real, shareable hrefs (cards/tiles are role="button", left as-is) */
+  document.querySelectorAll("a[data-route]").forEach((a) => {
+    a.setAttribute("href", routeToHash(a.dataset.route));
+  });
+  showPage(hashToRoute());
   initFaq();
   initCaseFilters();
   initCaseTiles();

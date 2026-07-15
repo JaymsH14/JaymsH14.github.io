@@ -50,11 +50,10 @@ function animateHeroEntrance() {
   if (!heroSection) return;
 
   if (prefersReduced) {
-    gsap.set([".hero-logo-above", ".hero-eyebrow", ".hero-h1", ".hero-sub", ".hero-ctas .pill-btn", ".logo-item"], { autoAlpha: 1, y: 0, scale: 1 });
+    gsap.set([".hero-eyebrow", ".hero-h1", ".hero-sub", ".hero-ctas .pill-btn", ".logo-item"], { autoAlpha: 1, y: 0, scale: 1 });
     return;
   }
 
-  gsap.set(".hero-logo-above",     { autoAlpha: 0, y: 20, scale: 0.94 });
   gsap.set(".hero-eyebrow",        { autoAlpha: 0, y: 18 });
   gsap.set(".hero-h1",             { autoAlpha: 0, y: 44 });
   gsap.set(".hero-sub",            { autoAlpha: 0, y: 22 });
@@ -62,7 +61,6 @@ function animateHeroEntrance() {
   gsap.set(".logo-item",           { autoAlpha: 0 });
 
   gsap.timeline({ defaults: { ease: "power2.out" } })
-    .to(".hero-logo-above",     { autoAlpha: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.3)" }, 0.15)
     .to(".hero-eyebrow",        { autoAlpha: 1, y: 0, duration: 0.45 }, 0.38)
     .to(".hero-h1",             { autoAlpha: 1, y: 0, duration: 0.6 }, 0.5)
     .to(".hero-sub",            { autoAlpha: 1, y: 0, duration: 0.5 }, 0.84)
@@ -337,6 +335,10 @@ function pageTransition(outEl, inEl, callback) {
    -------------------------------------------------------------------------- */
 
 function animateFaqToggle(bodyEl, open) {
+  if (prefersReduced) {
+    gsap.set(bodyEl, { display: open ? "block" : "none", clearProps: "height,opacity,paddingBottom" });
+    return;
+  }
   if (open) {
     gsap.set(bodyEl, { display: "block" });
     gsap.from(bodyEl, { height: 0, opacity: 0, paddingBottom: 0, duration: 0.32, ease: "power2.out" });
