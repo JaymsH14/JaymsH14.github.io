@@ -8,7 +8,7 @@
    Router
    -------------------------------------------------------------------------- */
 
-const PAGES = ["home", "services", "work", "links", "contact"];
+const PAGES = ["home", "services", "work", "studio", "contact"];
 
 function showPage(route) {
   if (!PAGES.includes(route)) route = "home";
@@ -27,7 +27,7 @@ function showPage(route) {
     home:     "DigitalStone AI — Intelligence that runs",
     services: "Services & Skills — DigitalStone AI",
     work:     "Case Studies — DigitalStone AI",
-    links:    "Links — DigitalStone AI",
+    studio:   "Studio — DigitalStone AI",
     contact:  "Contact — DigitalStone AI",
   };
   document.title = titles[route] || "DigitalStone AI";
@@ -37,7 +37,7 @@ function showPage(route) {
     home:     "DigitalStone AI — AI automation and consulting. We design, build, and run AI systems that drive measurable outcomes for operators, founders, and agencies.",
     services: "Six practice areas from AI automation systems to managed operations. We design, build, and run AI — not just advise. Free 45-minute diagnostic.",
     work:     "Case studies across legal, wellness, hospitality, and infrastructure. Live AI systems measured in production — not demos, not decks.",
-    links:    "Where to find DigitalStone AI, the tools we use, and the resources that shape how we build AI systems.",
+    studio:    "DigitalStone AI Studio — AI-driven workflows and systems that generate AI images and video for content creators, brands, and teams looking to scale. Coming soon.",
     contact:  "Start a project with DigitalStone AI. Free 45-minute diagnostic. We'll tell you whether AI is the right tool before you spend a dollar.",
   };
   const descEl = document.querySelector('meta[name="description"]');

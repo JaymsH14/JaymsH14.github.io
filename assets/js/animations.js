@@ -245,28 +245,18 @@ function initCasesScrollAnimations() {
 }
 
 /* --------------------------------------------------------------------------
-   Links — scroll animations
+   Studio — scroll animation
    -------------------------------------------------------------------------- */
 
-function initLinksScrollAnimations() {
-  const page = document.querySelector('[data-page="links"]');
+function initStudioScrollAnimations() {
+  const page = document.querySelector('[data-page="studio"]');
   if (!page) return;
 
-  stFadeUp(page.querySelectorAll(".link-section-card"), "#links-grid", { stagger: 0.09, y: 28 });
-
-  page.querySelectorAll(".link-section-card").forEach((card, ci) => {
-    card.querySelectorAll(".link-row").forEach((row, ri) => {
-      gsap.from(row, {
-        autoAlpha: 0, x: -18, duration: 0.45, ease: "power2.out",
-        delay: ci * 0.06 + ri * 0.05,
-        scrollTrigger: { trigger: card, start: "top 84%", once: true },
-      });
-    });
-  });
-
-  gsap.from(page.querySelector(".lk-cta .cta-h2"), {
-    autoAlpha: 0, y: 28, duration: 0.65,
-    scrollTrigger: { trigger: "#links-cta", start: "top 82%", once: true },
+  /* Transform-only reveal (no opacity/visibility) so the panel is never left
+     blank if the trigger is slow to fire; the page itself fades in already. */
+  gsap.from(page.querySelector(".studio-panel"), {
+    y: 24, duration: 0.6, ease: "power2.out",
+    scrollTrigger: { trigger: "#studio-content", start: "top 88%", once: true },
   });
 }
 
@@ -389,7 +379,7 @@ function initPageScrollAnimations(route) {
     case "home":     initHomeScrollAnimations();     break;
     case "services": initServicesScrollAnimations(); break;
     case "work":     initCasesScrollAnimations();    break;
-    case "links":    initLinksScrollAnimations();    break;
+    case "studio":   initStudioScrollAnimations();   break;
     case "contact":  initContactScrollAnimations();  break;
   }
 
