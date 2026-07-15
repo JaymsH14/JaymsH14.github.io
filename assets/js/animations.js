@@ -234,10 +234,9 @@ function initCasesScrollAnimations() {
     autoAlpha: 0, y: 18, stagger: 0.06, duration: 0.45,
     scrollTrigger: { trigger: "#deep-dive", start: "top 84%", once: true },
   });
-  gsap.from(page.querySelector(".case-panel.is-active"), {
-    autoAlpha: 0, y: 24, duration: 0.65,
-    scrollTrigger: { trigger: "#deep-dive", start: "top 80%", once: true }, delay: 0.2,
-  });
+  /* The active deep-dive panel is shown/hidden by the tab switcher
+     (animateCasePanel); a separate scroll-reveal here fought that logic and
+     could leave the panel blank, so it is intentionally omitted. */
 
   gsap.from(page.querySelector(".cases-cta .cta-h2"), {
     autoAlpha: 0, y: 28, duration: 0.65,
@@ -364,8 +363,15 @@ function animateCasePanel(outEl, inEl) {
     autoAlpha: 0, duration: 0.18, ease: "power1.in",
     onComplete() {
       outEl.classList.remove("is-active");
+      /* Reset the hidden panel's inline opacity/visibility so that when it is
+         shown again, gsap.from() captures a visible end state (otherwise it
+         animates from hidden to hidden and the panel renders blank). */
+      gsap.set(outEl, { clearProps: "opacity,visibility" });
       inEl.classList.add("is-active");
-      gsap.from(inEl, { autoAlpha: 0, y: 12, duration: 0.28, ease: "power2.out" });
+      gsap.from(inEl, {
+        autoAlpha: 0, y: 12, duration: 0.28, ease: "power2.out",
+        clearProps: "opacity,visibility,transform",
+      });
     },
   });
 }
