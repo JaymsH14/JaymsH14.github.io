@@ -354,26 +354,25 @@ function animateFaqToggle(bodyEl, open) {
    -------------------------------------------------------------------------- */
 
 function animateCasePanel(outEl, inEl) {
-  if (prefersReduced) {
-    outEl.classList.remove("is-active");
-    inEl.classList.add("is-active");
-    return;
-  }
-  gsap.to(outEl, {
-    autoAlpha: 0, duration: 0.18, ease: "power1.in",
-    onComplete() {
-      outEl.classList.remove("is-active");
-      /* Reset the hidden panel's inline opacity/visibility so that when it is
-         shown again, gsap.from() captures a visible end state (otherwise it
-         animates from hidden to hidden and the panel renders blank). */
-      gsap.set(outEl, { clearProps: "opacity,visibility" });
-      inEl.classList.add("is-active");
-      gsap.from(inEl, {
-        autoAlpha: 0, y: 12, duration: 0.28, ease: "power2.out",
-        clearProps: "opacity,visibility,transform",
-      });
-    },
-  });
+  /* Cancel any in-flight tweens (rapid tab clicks) and swap panels immediately,
+     so the switch never depends on an animation finishing. */
+  gsap.killTweensOf([outEl, inEl]);
+  outEl.classList.remove("is-active");
+  inEl.classList.add("is-active");
+  /* Strip any inline styles a previous tween left behind so both panels are in
+     a known, visible state before we animate. */
+  gsap.set([outEl, inEl], { clearProps: "all" });
+
+  if (prefersReduced) return;
+
+  /* fromTo with an EXPLICIT visible end state. Unlike gsap.from(), this never
+     captures a stale hidden state as the target, so the panel always finishes
+     visible even if it was mid-transition or previously hidden. */
+  gsap.fromTo(
+    inEl,
+    { autoAlpha: 0, y: 12 },
+    { autoAlpha: 1, y: 0, duration: 0.3, ease: "power2.out", clearProps: "opacity,visibility,transform" }
+  );
 }
 
 /* --------------------------------------------------------------------------
